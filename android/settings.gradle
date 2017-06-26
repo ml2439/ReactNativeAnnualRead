@@ -1,0 +1,3 @@
+rootProject.name = 'AnnualRead'
+
+include ':app'
