@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Emmanuel",
+    "dateStart": "1/10/2017",
+    "dateEnd": "3/1/2017",
+    "finished": true
+  },
+  {
+    "id": 2,
+    "name": "Sam",
+    "dateStart": "1/10/2017",
+    "dateEnd": "3/1/2017",
+    "finished": true
+  },
+  {
+    "id": 3,
+    "name": "Denny",
+    "dateStart": "1/10/2017",
+    "dateEnd": "3/1/2017",
+    "finished": true
+  },
+  {
+    "id": 4,
+    "name": "James",
+    "dateStart": "1/10/2017",
+    "dateEnd": "",
+    "finished": false
+  }
+]

@@ -5,9 +5,14 @@ import {
   View
 } from 'react-native';
 import firebase from 'firebase';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import Login from './components/Login';
 import Loader from './components/Loader';
 import SetGoal from './components/SetGoal';
+import reducers from './reducers/bookReducer';
+
+const store = createStore(reducers);
 
 export default class App extends Component {
 
@@ -25,8 +30,8 @@ export default class App extends Component {
       messagingSenderId: "761878318473"
     });
 
-    firebase.auth().onAuthStateChanged( user => {
-      if(user) {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
         this.setState({
           loggedIn: true
         })
@@ -39,21 +44,23 @@ export default class App extends Component {
   }
 
   renderInitialView() {
-    switch(this.state.loggedIn) {
+    switch (this.state.loggedIn) {
       case true:
         return <SetGoal />
       case false:
         return <Login />
-      default: 
+      default:
         return <Loader />
     }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.renderInitialView()}
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {this.renderInitialView()}
+        </View>
+      </Provider>
     );
   }
 }
