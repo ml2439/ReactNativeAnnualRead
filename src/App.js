@@ -9,7 +9,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Login from './components/Login';
 import Loader from './components/Loader';
-import BookList from './components/BookList';
+import Navigation from './Navigation';
+// import BookList from './components/BookList';
 import reducers from './reducers/bookReducer';
 
 const store = createStore(
@@ -18,7 +19,7 @@ const store = createStore(
 );
 
 export default class App extends Component {
-
+  // a local state
   state = {
     loggedIn: null,
   }
@@ -49,7 +50,7 @@ export default class App extends Component {
   renderInitialView() {
     switch (this.state.loggedIn) {
       case true:
-        return <BookList />
+        return <Navigation />
       case false:
         return <Login />
       default:
@@ -60,19 +61,8 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          {this.renderInitialView()}
-        </View>
+        {this.renderInitialView()}
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
