@@ -1,11 +1,16 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text,
+    View,
 } from 'react-native';
 import { MKSpinner } from 'react-native-material-kit';
 
 const styles = StyleSheet.create({
+    loader: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     spinner: {
         width: 50,
         height: 50,
@@ -14,7 +19,9 @@ const styles = StyleSheet.create({
 
 const Loader = () => {
     return (
-        <MKSpinner style={styles.spinner} />
+        <View style={styles.loader}>
+            <MKSpinner style={styles.spinner} />
+        </View>
     )
 }
 
