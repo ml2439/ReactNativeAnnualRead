@@ -12,7 +12,10 @@ import Loader from './components/Loader';
 import SetGoal from './components/SetGoal';
 import reducers from './reducers/bookReducer';
 
-const store = createStore(reducers);
+const store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default class App extends Component {
 
