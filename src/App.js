@@ -5,6 +5,7 @@ import {
   View
 } from 'react-native';
 import firebase from 'firebase';
+import Login from './components/Login';
 
 export default class App extends Component {
   componentWillMount() {
@@ -21,9 +22,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Annual Read!
-        </Text>
+        <Login />
       </View>
     );
   }
@@ -35,10 +34,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
 });
