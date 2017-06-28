@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Login from './components/Login';
 import Loader from './components/Loader';
-import SetGoal from './components/SetGoal';
+import BookList from './components/BookList';
 import reducers from './reducers/bookReducer';
 
 const store = createStore(
@@ -49,7 +49,7 @@ export default class App extends Component {
   renderInitialView() {
     switch (this.state.loggedIn) {
       case true:
-        return <SetGoal />
+        return <BookList />
       case false:
         return <Login />
       default:
