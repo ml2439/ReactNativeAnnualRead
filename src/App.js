@@ -6,8 +6,15 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import Login from './components/Login';
+import Loader from './components/Loader';
+import SetGoal from './components/SetGoal';
 
 export default class App extends Component {
+
+  state = {
+    loggedIn: null,
+  }
+
   componentWillMount() {
     firebase.initializeApp({
       apiKey: "AIzaSyBezdzOymH8LNlXCj7Yo85DMdooP2_KbeU",
@@ -16,13 +23,36 @@ export default class App extends Component {
       projectId: "annualread",
       storageBucket: "",
       messagingSenderId: "761878318473"
+    });
+
+    firebase.auth().onAuthStateChanged( user => {
+      if(user) {
+        this.setState({
+          loggedIn: true
+        })
+      } else {
+        this.setState({
+          loggedIn: false
+        })
+      }
     })
+  }
+
+  renderInitialView() {
+    switch(this.state.loggedIn) {
+      case true:
+        return <SetGoal />
+      case false:
+        return <Login />
+      default: 
+        return <Loader />
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Login />
+        {this.renderInitialView()}
       </View>
     );
   }
