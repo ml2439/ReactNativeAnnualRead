@@ -1,39 +1,43 @@
 import React, { Component } from 'react';
 import {
-    Text,
     View,
-    StyleSheet,
-    ScrollView,
-    TouchableOpacity,
+    StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
-import FoundationIcon from 'react-native-vector-icons/Foundation';
 import * as actions from '../actions';
+import DetailView from './DetailView';
+import DetailUpdate from './DetailUpdate';
 
 class BookDetail extends Component {
+    renderDetail() {
+        return (this.props.updating) ?
+            <DetailUpdate /> :
+            <DetailView />
+    }
 
     render() {
         return (
-            <ScrollView showsVerticalScrollIndicator={false} >
-                <FoundationIcon 
-                    name={'x'} 
-                    size={20}
-                    onPress={() => this.props.noneSelected()} />
-                <Text>{this.props.book.name}</Text>
-                <Text>{this.props.book.note}</Text>
-                <FoundationIcon 
-                    name={'trash'} 
-                    size={30}
-                    onPress={() => this.props.removeBook(this.props.book.bid)} />
-            </ScrollView>
+            <View style={styles.container}>
+                {this.renderDetail()}
+            </View>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        book: state.bookSelected,
+        updating: state.updating,
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+})
 
 export default connect(mapStateToProps, actions)(BookDetail);

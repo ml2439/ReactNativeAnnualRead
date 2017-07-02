@@ -56,3 +56,22 @@ export const removeBook = (bid) => {
             })
     }
 }
+
+export const updateBook = (bookSelected) => {
+    return {
+        type: TYPES.UPDATE_BOOK,
+        payload: bookSelected
+    }
+}
+
+export const saveBook = ({name, note, bid}) => {
+    const { currentUser } = firebase.auth();
+    return (dispatch) => {
+        firebase.database().ref(`/users/${currentUser.uid}/books/${bid}`)
+            .set({ name, note, bid })
+            .then(() => {
+                dispatch({ type: TYPES.SAVE_BOOK })  // Reset the fields to blank after creating
+            })
+    }
+    
+}
