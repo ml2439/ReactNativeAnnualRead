@@ -14,6 +14,13 @@ const LoginButton = MKButton.coloredButton()
     .build()
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
     form: {
         paddingBottom: 10,
         width: 200,
@@ -80,33 +87,35 @@ export default class Login extends Component {
     }
 
     render() {
-        const { form, fieldStyles, loginButtonArea, errorMessage, container, welcome } = styles;
+        const { container, form, fieldStyles, loginButtonArea, errorMessage } = styles;
 
         return (
-            <View style={form}>
-                <Text>
-                    Login or Create an account
+            <View style={container}>
+                <View style={form}>
+                    <Text>
+                        Login or Create an account
                 </Text>
-                <MKTextField
-                    text={this.state.email}
-                    onTextChange={email => this.setState({ email })}
-                    textInputStyle={fieldStyles}
-                    placeholder={'Email...'}
-                    tintColor={MKColor.Teal}
-                />
-                <MKTextField
-                    text={this.state.password}
-                    onTextChange={password => this.setState({ password })}
-                    textInputStyle={fieldStyles}
-                    placeholder={'Password...'}
-                    tintColor={MKColor.Teal}
-                    password={true}
-                />
-                <Text style={errorMessage}>
-                    {this.state.error}
-                </Text>
-                <View style={loginButtonArea}>
-                    {this.renderLoader()}
+                    <MKTextField
+                        text={this.state.email}
+                        onTextChange={email => this.setState({ email })}
+                        textInputStyle={fieldStyles}
+                        placeholder={'Email...'}
+                        tintColor={MKColor.Teal}
+                    />
+                    <MKTextField
+                        text={this.state.password}
+                        onTextChange={password => this.setState({ password })}
+                        textInputStyle={fieldStyles}
+                        placeholder={'Password...'}
+                        tintColor={MKColor.Teal}
+                        password={true}
+                    />
+                    <Text style={errorMessage}>
+                        {this.state.error}
+                    </Text>
+                    <View style={loginButtonArea}>
+                        {this.renderLoader()}
+                    </View>
                 </View>
             </View>
         );

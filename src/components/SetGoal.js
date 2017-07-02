@@ -4,8 +4,19 @@ import {
   Text,
   View
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Foundation';
 
 export default class SetGoal extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'SetGoal',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        name={'flag'}
+        size={50}
+        style={{ color: tintColor }}
+      />
+    )
+  }
   render() {
     return (
       <View style={styles.container}>
