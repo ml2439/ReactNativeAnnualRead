@@ -4,6 +4,7 @@
     "name": "Emmanuel",
     "dateStart": "1/10/2017",
     "dateEnd": "3/1/2017",
+    "note": "I like this book",
     "finished": true
   },
   {
@@ -11,6 +12,7 @@
     "name": "Sam",
     "dateStart": "1/10/2017",
     "dateEnd": "3/1/2017",
+    "note": "history",
     "finished": true
   },
   {
@@ -18,6 +20,7 @@
     "name": "Denny",
     "dateStart": "1/10/2017",
     "dateEnd": "3/1/2017",
+    "note": "read chapter 3 again",
     "finished": true
   },
   {
@@ -25,6 +28,7 @@
     "name": "James",
     "dateStart": "1/10/2017",
     "dateEnd": "",
+    "note": "",
     "finished": false
   }
 ]

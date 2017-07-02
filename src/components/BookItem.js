@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
 import * as actions from '../actions';
@@ -16,9 +16,13 @@ const styles = StyleSheet.create({
 
 const BookItem = (props) => {
     return (
-        <View style={[theme.cardStyle, styles.card]}>
-            <Text>{props.book.name}</Text>
-        </View>
+        <TouchableWithoutFeedback
+            onPress={() => {props.selectBook(props.book)}}
+        >
+            <View style={[theme.cardStyle, styles.card]}>
+                <Text>{props.book.name}</Text>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 

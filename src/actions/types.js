@@ -1,0 +1,6 @@
+const TYPES = {
+    SELECTED_BOOK: 'SELECTED_BOOK',
+    NONE_SELECTED: 'NONE_SELECTED',
+}
+
+export default TYPES
