@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ListView } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
 import BookItem from './BookItem';
 import BookDetail from './BookDetail';
+import { loadInitialBooks } from '../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +29,10 @@ class BookList extends Component {
         )
     }
 
+    componentWillMount() {
+        this.props.loadInitialBooks();
+    }
+
     renderInitialView() {
         const ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
@@ -40,6 +46,7 @@ class BookList extends Component {
             :
             (
                 <ListView
+                    enableEmptySections={true}
                     dataSource={this.dataSource}
                     renderRow={rowData =>
                         <BookItem book={rowData} />}
@@ -57,10 +64,13 @@ class BookList extends Component {
 }
 
 const mapStateToProps = state => {
+    const books = _.map(state.books, (val, uid) => {
+        return { ...val, uid }
+    })
     return {
-        books: state.books,
+        books,
         detailView: state.detailView,
     }
 }
 
-export default connect(mapStateToProps)(BookList)
+export default connect(mapStateToProps, {loadInitialBooks})(BookList)
