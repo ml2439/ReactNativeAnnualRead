@@ -21,6 +21,10 @@ class BookDetail extends Component {
                     onPress={() => this.props.noneSelected()} />
                 <Text>{this.props.book.name}</Text>
                 <Text>{this.props.book.note}</Text>
+                <FoundationIcon 
+                    name={'trash'} 
+                    size={30}
+                    onPress={() => this.props.removeBook(this.props.book.bid)} />
             </ScrollView>
         );
     }

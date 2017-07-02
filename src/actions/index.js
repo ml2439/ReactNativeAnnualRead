@@ -45,3 +45,14 @@ export const createNewBook = ({name, note}) => {
             })
     }
 }
+
+export const removeBook = (bid) => {
+    const { currentUser } = firebase.auth();
+    return (dispatch) => {
+        firebase.database().ref(`/users/${currentUser.uid}/books/${bid}`)
+            .remove()
+            .then(() => {
+                dispatch({ type: TYPES.REMOVE_BOOK })
+            })
+    }
+}

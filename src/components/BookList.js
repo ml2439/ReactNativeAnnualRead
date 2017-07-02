@@ -64,8 +64,8 @@ class BookList extends Component {
 }
 
 const mapStateToProps = state => {
-    const books = _.map(state.books, (val, uid) => {
-        return { ...val, uid }
+    const books = _.map(state.books, (val, bid) => {    // Use this bid to remove book
+        return { ...val, bid }
     })
     return {
         books,

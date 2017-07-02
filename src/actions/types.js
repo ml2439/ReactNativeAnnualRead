@@ -5,6 +5,7 @@ const TYPES = {
     FORM_UPDATE: 'FORM_UPDATE',
     NEW_BOOK: 'NEW_BOOK',
     ADD_BOOK: 'ADD_BOOK',
+    REMOVE_BOOK: 'REMOVE_BOOK',
 }
 
 export default TYPES

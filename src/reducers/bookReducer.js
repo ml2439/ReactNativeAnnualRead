@@ -51,6 +51,13 @@ export default (state=initialState, action) => {
         //         ...action.newBook
         //     }
 
+        case TYPES.REMOVE_BOOK:
+            return {
+                ...state,
+                detailView: false,
+                bookSelected: null
+            }
+
         default:
             return state
     }
