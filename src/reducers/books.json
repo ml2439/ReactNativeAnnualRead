@@ -1,33 +1,29 @@
 [
   {
-    "id": 1,
     "name": "Emmanuel",
     "dateStart": "1/10/2017",
-    "dateEnd": "3/1/2017",
+    "finishDate": "3/1/2017",
     "note": "I like this book",
     "finished": true
   },
   {
-    "id": 2,
     "name": "Sam",
     "dateStart": "1/10/2017",
-    "dateEnd": "3/1/2017",
+    "finishDate": "3/1/2017",
     "note": "history",
     "finished": true
   },
   {
-    "id": 3,
     "name": "Denny",
     "dateStart": "1/10/2017",
-    "dateEnd": "3/1/2017",
+    "finishDate": "3/1/2017",
     "note": "read chapter 3 again",
     "finished": true
   },
   {
-    "id": 4,
     "name": "James",
     "dateStart": "1/10/2017",
-    "dateEnd": "",
+    "finishDate": "",
     "note": "",
     "finished": false
   }

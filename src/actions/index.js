@@ -1,12 +1,13 @@
 import { AsyncStorage } from 'react-native';
 import TYPES from './types';
+import books from '../reducers/books.json';
 
-// export const selectBook = book => {
-//     return {
-//         type: TYPES.SELECTED_BOOK,
-//         payload: book
-//     }
-// }
+export const selectBook = book => {
+    return {
+        type: TYPES.SELECTED_BOOK,
+        payload: book
+    }
+}
 
 // export const noneSelected = () => {
 //     return {
@@ -25,10 +26,31 @@ import TYPES from './types';
 //     }
 // }
 
+export const loadInitialBooks = () => {
+    return {
+        type: TYPES.INITIAL_FETCH,
+        payload: books
+    }
+}
+
 export const formUpdateBook = ({prop, value}) => {
     return {
         type: TYPES.FORM_UPDATE_BOOK,
         payload: {prop, value}
+    }
+}
+
+export const removeBook = index => {
+    return {
+        type: TYPES.REMOVE_BOOK,
+        payload: index
+    }
+}
+
+export const toggleBook = bid => {
+    return {
+        type: TYPES.TOGGLE_BOOK,
+        payload: bid
     }
 }
 

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
+import FoundationIcon from 'react-native-vector-icons/Foundation';
 import * as actions from '../actions';
 
 const theme = getTheme();
@@ -11,18 +12,18 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: 300,
         height: 200,
+    },
+    listItem: {
+        height: 50
     }
 })
 
-const BookItem = (props) => {
+const BookItem = props => {
     return (
-        <TouchableWithoutFeedback
-            onPress={() => {props.selectBook(props.book)}}
-        >
-            <View style={[theme.cardStyle, styles.card]}>
-                <Text>{props.book.name}</Text>
-            </View>
-        </TouchableWithoutFeedback>
+        <View style={styles.listItem}>
+            <Text>{props.book.name}</Text>
+            <Text onPress={() => props.removeBook(props.book.bid)}>remove</Text>
+        </View>
     )
 }
 

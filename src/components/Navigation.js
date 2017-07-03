@@ -5,8 +5,8 @@ import SetGoal from './SetGoal';
 import Stats from './Stats';
 
 const Navigation = TabNavigator({
-    SetGoal: { screen: SetGoal },
     BookList: { screen: BookList },
+    SetGoal: { screen: SetGoal },
     Stats: { screen: Stats },
 }, {
     tabBarOptions: {

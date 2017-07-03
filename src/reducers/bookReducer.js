@@ -1,21 +1,19 @@
 import TYPES from '../actions/types'
 
-const initialState = {
-    books: [],
-    detailView: false,
-    bookSelected: null,
-    name: '',
-    note: '',
-    loading: false,
-    updating: false,
-}
+const initialState = [
+
+]
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case TYPES.INITIAL_FETCH:
+            return [
+                ...action.payload
+            ]
+
+        case TYPES.TOGGLE_BOOK:
             return {
-                ...state,
-                books: action.payload
+
             }
 
         case TYPES.SELECTED_BOOK:
@@ -72,12 +70,12 @@ export default (state = initialState, action) => {
                 bid: '',
             }
 
-        case TYPES.REMOVE_BOOK:
-            return {
-                ...state,
-                detailView: false,
-                bookSelected: null
-            }
+        case TYPES.REMOVE_BOOK: {
+            return [
+                ...state.slice(0, action.payload),
+                ...state.slice(action.payload + 1)
+            ]
+        }
 
         default:
             return state
