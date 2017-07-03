@@ -22,7 +22,12 @@ const BookItem = props => {
     return (
         <View style={styles.listItem}>
             <Text>{props.book.name}</Text>
-            <Text onPress={() => props.removeBook(props.book.bid)}>remove</Text>
+            <FoundationIcon
+                name={'x'}
+                size={20}
+                style={{color: '#ccc'}}
+                onPress={() => props.removeBook(props.book.bid)} 
+            />
         </View>
     )
 }
