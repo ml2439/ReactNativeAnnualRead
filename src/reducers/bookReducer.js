@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
                 bookSelected: null,
             }
 
-        case TYPES.FORM_UPDATE:
+        case TYPES.FORM_UPDATE_BOOK:
             return {
                 ...state,
                 [action.payload.prop]: action.payload.value

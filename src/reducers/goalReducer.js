@@ -14,6 +14,12 @@ export default (state=initialState, action) => {
                 ddl: action.payload.ddl
             }
         
+        case TYPES.FORM_UPDATE_GOAL:
+            return {
+                ...state,
+                [action.payload.prop]: action.payload.value
+            }
+
         default: 
             return state
     }

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
+  TextInput,
   View,
   DatePickerIOS,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
-import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
+import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -32,34 +33,20 @@ class SetGoal extends Component {
     this.props.setGoal({ num, ddl });
   }
 
-  constructor() {
-    super();
-    this.state = {
-      date: new Date()
-    }
-  }
-
-  onDateChange() {
-    this.setState({
-      date
-    })
-  }
-
   render() {
     return (
       <View style={styles.container}>
         <Text>Set Goal page</Text>
-        <MKTextField
-          textInputStyle={styles.fieldStyles}
-          placeholder={'Number to read...'}
-          tintColor={MKColor.Teal}
-          value={this.props.num}
-          onChangeText={value => this.props.formUpdate({ prop: 'num', value })}
+        <TextInput 
+          style={styles.fieldStyles}
+          placeholder={`${this.props.num} books to read`}
+          onChangeText={value => this.props.formUpdateGoal({prop: 'num', value})}
         />
         <DatePickerIOS
-          date={this.state.date}
+          date={this.props.ddl}
           mode='date'
-          onDateChange={this.onDateChange} />
+          onDateChange={value => this.props.formUpdateGoal({ prop: 'ddl', value })}
+        />
         <View>
           <SubmitButton onPress={this.onSubmitPress.bind(this)} />
         </View>
@@ -76,12 +63,12 @@ const styles = StyleSheet.create({
   },
   fieldStyles: {
     height: 40,
-    color: MKColor.Orange,
+    color: MKColor.DeepPurple,
   },
 });
 
 const mapStateToProps = state => {
-  const { num, ddl } = state;
+  const { num, ddl } = state.goalReducer;
   return { num, ddl }
 }
 

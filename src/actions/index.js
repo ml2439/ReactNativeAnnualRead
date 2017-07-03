@@ -25,9 +25,16 @@ import TYPES from './types';
 //     }
 // }
 
-export const formUpdate = ({prop, value}) => {
+export const formUpdateBook = ({prop, value}) => {
     return {
-        type: TYPES.FORM_UPDATE,
+        type: TYPES.FORM_UPDATE_BOOK,
+        payload: {prop, value}
+    }
+}
+
+export const formUpdateGoal = ({prop, value}) => {
+    return {
+        type: TYPES.FORM_UPDATE_GOAL,
         payload: {prop, value}
     }
 }
