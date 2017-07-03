@@ -5,7 +5,7 @@ const initialState = {
     ddl: new Date()
 }
 
-export default (state = initialState, action) => {
+export default (state=initialState, action) => {
     switch (action.type) {
         case TYPES.SAVE_GOAL:
             return {
@@ -13,5 +13,8 @@ export default (state = initialState, action) => {
                 num: action.payload.num,
                 ddl: action.payload.ddl
             }
+        
+        default: 
+            return state
     }
 }

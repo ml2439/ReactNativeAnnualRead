@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import Thunk from 'redux-thunk';
 import Loader from './components/Loader';
 import Navigation from './components/Navigation';
-import reducers from './reducers/bookReducer';
+import reducers from './reducers';
 
 const store = createStore(
   reducers,
