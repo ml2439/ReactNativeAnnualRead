@@ -2,12 +2,12 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import { MKColor } from 'react-native-material-kit';
 import BookList from './BookList';
 import SetGoal from './SetGoal';
-import AddBook from './AddBook';
+import Stats from './Stats';
 
 const Navigation = TabNavigator({
-    BookList: { screen: BookList },
-    AddBook: { screen: AddBook },
     SetGoal: { screen: SetGoal },
+    BookList: { screen: BookList },
+    Stats: { screen: Stats },
 }, {
     tabBarOptions: {
         activeTintColor: MKColor.BlueGrey,

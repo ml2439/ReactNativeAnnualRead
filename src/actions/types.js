@@ -8,6 +8,9 @@ const TYPES = {
     REMOVE_BOOK: 'REMOVE_BOOK',
     UPDATE_BOOK: 'UPDATE_BOOK',
     SAVE_BOOK: 'SAVE_BOOK',
+    
+    SAVE_GOAL: 'SAVE_GOAL',
+    
 }
 
 export default TYPES
