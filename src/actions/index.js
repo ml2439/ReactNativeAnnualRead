@@ -33,10 +33,29 @@ export const loadInitialBooks = () => {
     }
 }
 
-export const formUpdateBook = ({prop, value}) => {
+// assume no error
+export const loadGoal = () => {
+    return (dispatch) => {
+        AsyncStorage.getItem(
+            '@AR:Goal',
+            (err, value) => {
+                let myGoal = {}
+                if (value) {
+                    myGoal = JSON.parse(value)
+                }
+                dispatch({
+                    type: TYPES.LOAD_GOAL,
+                    payload: myGoal
+                })
+            }
+        )
+    }
+}
+
+export const formUpdateBook = ({ prop, value }) => {
     return {
         type: TYPES.FORM_UPDATE_BOOK,
-        payload: {prop, value}
+        payload: { prop, value }
     }
 }
 
@@ -54,20 +73,20 @@ export const toggleBook = bid => {
     }
 }
 
-export const formUpdateGoal = ({prop, value}) => {
+export const formUpdateGoal = ({ prop, value }) => {
     return {
         type: TYPES.FORM_UPDATE_GOAL,
-        payload: {prop, value}
+        payload: { prop, value }
     }
 }
 
-export const setGoal = ({num, ddl}) => {
+export const setGoal = ({ num, ddl }) => {
     return (dispatch) => {
         AsyncStorage.setItem(
             '@AR:Goal',
-            JSON.stringify({num, ddl})
+            JSON.stringify({ num, ddl })
         ).then(() => {
-            dispatch({ type: TYPES.SAVE_GOAL, payload: {num, ddl} })
+            dispatch({ type: TYPES.SAVE_GOAL, payload: { num, ddl } })
         })
     }
 }
@@ -113,5 +132,5 @@ export const setGoal = ({num, ddl}) => {
 //                 dispatch({ type: TYPES.SAVE_BOOK })  // Reset the fields to blank after creating
 //             })
 //     }
-    
+
 // }

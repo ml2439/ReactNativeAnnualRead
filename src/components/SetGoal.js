@@ -28,6 +28,10 @@ class SetGoal extends Component {
     )
   }
 
+  componentWillMount() {
+    this.props.loadGoal();
+  }
+
   onSubmitPress() {
     const { num, ddl } = this.props;
     this.props.setGoal({ num, ddl });
@@ -43,7 +47,7 @@ class SetGoal extends Component {
           onChangeText={value => this.props.formUpdateGoal({prop: 'num', value})}
         />
         <DatePickerIOS
-          date={this.props.ddl}
+          date={new Date(this.props.ddl)}
           mode='date'
           onDateChange={value => this.props.formUpdateGoal({ prop: 'ddl', value })}
         />

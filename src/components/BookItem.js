@@ -10,7 +10,7 @@ const theme = getTheme();
 const styles = StyleSheet.create({
     card: {
         marginTop: 10,
-        height: 200,
+        height: 50,
         flexDirection: 'row',
     },
     removeButton: {
