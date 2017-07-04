@@ -11,6 +11,17 @@ export default (state = initialState, action) => {
                 ...action.payload
             ]
 
+        case TYPES.SAVE_BOOK:
+            return [
+                ...state,
+                {
+                    name: action.payload.name,
+                    author: action.payload.author,
+                    mark: "#FFC300",
+                    finished: false
+                }
+            ]
+
         case TYPES.REMOVE_BOOK: {
             return [
                 ...state.slice(0, action.payload),
@@ -20,7 +31,7 @@ export default (state = initialState, action) => {
 
         case TYPES.TOGGLE_BOOK:
             return state.map((book, bid) => {
-                if(bid === action.payload && !book.finished) {
+                if (bid === action.payload && !book.finished) {
                     return {
                         ...book,
                         finished: true,

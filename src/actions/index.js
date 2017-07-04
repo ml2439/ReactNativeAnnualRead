@@ -56,6 +56,17 @@ export const formUpdateGoal = ({ prop, value }) => {
     }
 }
 
+export const addBook = (bookState) => {
+    return (dispatch) => {
+        AsyncStorage.setItem(
+            '@AR:Book',
+            JSON.stringify(bookState)
+        ).then(() => {
+            dispatch({ type: TYPES.SAVE_BOOK, payload: bookState})
+        })
+    }
+}
+
 export const setGoal = ({ num, ddl }) => {
     return (dispatch) => {
         AsyncStorage.setItem(

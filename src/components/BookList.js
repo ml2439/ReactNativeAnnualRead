@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ListView } from 'react-native';
+import { StyleSheet, Alert, View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
+import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import BookItem from './BookItem';
-import { loadInitialBooks } from '../actions';
+import * as actions from '../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 20,
   },
+  fieldStyles: {
+    height: 40,
+    color: MKColor.Orange,
+  },
+  addButton: {
+    marginTop: 20,
+  },
 });
+
+const AddButton = MKButton.coloredButton()
+  .withText('ADD')
+  .build()
 
 class BookList extends Component {
   static navigationOptions = {
@@ -24,6 +36,16 @@ class BookList extends Component {
         style={{ color: tintColor }}
       />
     )
+  }
+
+  constructor() {
+    super()
+    this.state = {
+      name: '',
+      author: '',
+      mark: "#FFC300",
+      finished: false
+    }
   }
 
   componentWillMount() {
@@ -47,12 +69,49 @@ class BookList extends Component {
     )
   }
 
+  validateBook = () => {
+    if (this.state.author && this.state.name) {
+      this.props.addBook(this.state);
+    } else {
+      Alert.alert(
+        'Add Book',
+        `Make sure there's no empty input`,
+        [
+          {
+            text: 'Ok',
+            style: 'cancel'
+          },
+        ],
+        { cancelable: true }
+      )
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
         {this.renderInitialView()}
         <Text>Swipe Left to Finish a Book</Text>
-      </View>
+
+        <Text>Add a Book</Text>
+        <MKTextField
+          textInputStyle={styles.fieldStyles}
+          placeholder={'Book name...'}
+          tintColor={MKColor.Teal}
+          value={this.state.name}
+          onChangeText={(name) => this.setState({ ...this.state, name })}
+        />
+        <MKTextField
+          textInputStyle={styles.fieldStyles}
+          placeholder={'Author...'}
+          tintColor={MKColor.Teal}
+          value={this.state.author}
+          onChangeText={(author) => this.setState({ ...this.state, author })}
+        />
+        <View style={styles.addButton}>
+          <AddButton onPress={this.validateBook} />
+        </View>
+      </View >
     )
   }
 }
@@ -61,9 +120,7 @@ const mapStateToProps = state => {
   const books = _.map(state.bookReducer, (val, bid) => {    // Use this bid to remove book
     return { ...val, bid }
   })
-  return {
-    books
-  }
+  return { books }
 }
 
-export default connect(mapStateToProps, { loadInitialBooks })(BookList)
+export default connect(mapStateToProps, actions)(BookList)
