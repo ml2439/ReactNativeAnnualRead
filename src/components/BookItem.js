@@ -3,25 +3,46 @@ import { StyleSheet, Text, Button, View, Alert, TouchableWithoutFeedback } from 
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import * as actions from '../actions';
 
 const theme = getTheme();
 
 const styles = StyleSheet.create({
     card: {
-        marginTop: 10,
+        marginTop: 5,
         height: 50,
         flexDirection: 'row',
+        alignItems: 'center',
     },
     removeButton: {
         color: '#ccc',
         padding: 10,
     },
+    bookInfo: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    bookName: {
+        fontStyle: 'italic',
+        fontSize: 16,
+        paddingBottom: 6,
+        color: '#444',
+    },
+    bookAuthor: {
+        color: '#555',
+        paddingTop: 6,
+        paddingRight: 10,
+    },
 })
 
 const BookItem = props => {
     return (
-        <View style={[theme.cardStyle, styles.card]}>
+        <GestureRecognizer
+            style={[theme.cardStyle, styles.card, { backgroundColor: props.book.mark }]}
+            onSwipeLeft={() => props.toggleBook(props.book.bid)}
+        >
             <FoundationIcon
                 name={'x'}
                 size={20}
@@ -42,13 +63,11 @@ const BookItem = props => {
                     { cancelable: true }
                 )}
             />
-            <Text>{props.book.name}</Text>
-            <Button 
-                title={props.book.finishDate}
-                color='#666'
-                onPress={() => props.toggleBook(props.book.bid)}
-            />
-        </View>
+            <View style={styles.bookInfo}>
+                <Text style={styles.bookName}>{props.book.name}</Text>
+                <Text style={styles.bookAuthor}>{props.book.author}</Text>
+            </View>
+        </GestureRecognizer>
     )
 }
 

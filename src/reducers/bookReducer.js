@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
                     return {
                         ...book,
                         finished: true,
-                        finishDate: (new Date()).toLocaleDateString("en-US")
+                        mark: '#00BAAD'//(new Date()).toLocaleDateString("en-US")
                     }
                 }
                 return book

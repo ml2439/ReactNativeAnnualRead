@@ -51,6 +51,7 @@ class BookList extends Component {
     return (
       <View style={styles.container}>
         {this.renderInitialView()}
+        <Text>Swipe Left to Finish a Book</Text>
       </View>
     )
   }

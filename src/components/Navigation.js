@@ -1,5 +1,4 @@
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import { MKColor } from 'react-native-material-kit';
 import BookList from './BookList';
 import SetGoal from './SetGoal';
 import Stats from './Stats';
@@ -10,12 +9,12 @@ const Navigation = TabNavigator({
     Stats: { screen: Stats },
 }, {
     tabBarOptions: {
-        activeTintColor: MKColor.BlueGrey,
+        activeTintColor: '#888',
         inactiveTintColor: 'white',
         swipeEnabled: true,
         showLabel: false,
         style: {
-            backgroundColor: MKColor.Amber
+            backgroundColor: '#900C3F'
         }
     }
 })
