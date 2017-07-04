@@ -28,7 +28,7 @@ const BookItem = props => {
                 style={styles.removeButton}
                 onPress={() => Alert.alert(
                     'Remove Book',
-                    `Sure you want to remove ${props.book.name}?`,
+                    `Sure you want to remove: ${props.book.name}?`,
                     [
                         {
                             text: 'Yes',

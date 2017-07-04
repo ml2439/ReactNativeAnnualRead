@@ -2,30 +2,6 @@ import { AsyncStorage } from 'react-native';
 import TYPES from './types';
 import books from '../reducers/books.json';
 
-export const selectBook = book => {
-    return {
-        type: TYPES.SELECTED_BOOK,
-        payload: book
-    }
-}
-
-// export const noneSelected = () => {
-//     return {
-//         type: TYPES.NONE_SELECTED
-//     }
-// }
-
-// export const loadInitialBooks = () => {
-//     const { currentUser } = firebase.auth();
-
-//     return (dispatch) => {
-//         firebase.database().ref(`/users/${currentUser.uid}/books`)
-//             .on('value', snapshot => {
-//                 dispatch({ type: TYPES.INITIAL_FETCH, payload: snapshot.val()})
-//             })
-//     }
-// }
-
 export const loadInitialBooks = () => {
     return {
         type: TYPES.INITIAL_FETCH,

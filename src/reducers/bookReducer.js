@@ -53,29 +53,8 @@ export default (state = initialState, action) => {
             }
 
         // dispatch when hit 'UPDATE' button in update view
-        case TYPES.SAVE_BOOK:
-            return {
-                ...state,
-                updating: false,
-                detailView: false,      // back to list after saving
-                name: '',
-                note: '',
-                bid: '',
-            }
 
-        case TYPES.SELECTED_BOOK:
-            return {
-                ...state,
-                detailView: true,
-                bookSelected: action.payload,
-            }
 
-        case TYPES.NONE_SELECTED:
-            return {
-                ...state,
-                detailView: false,
-                bookSelected: null,
-            }
 
         default:
             return state

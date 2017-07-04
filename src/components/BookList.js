@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
 import BookItem from './BookItem';
-import BookDetail from './BookDetail';
 import { loadInitialBooks } from '../actions';
 
 const styles = StyleSheet.create({
@@ -37,8 +36,7 @@ class BookList extends Component {
     })
     this.dataSource = ds.cloneWithRows(this.props.books)
 
-    return (this.props.detailView) ?
-      <BookDetail /> :
+    return (
       <ListView
         enableEmptySections={true}
         dataSource={this.dataSource}
@@ -46,6 +44,7 @@ class BookList extends Component {
           <BookItem book={rowData} />
         }
       />
+    )
   }
 
   render() {
