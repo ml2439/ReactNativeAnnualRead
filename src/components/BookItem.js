@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Button, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, Button, View, Alert, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
@@ -26,7 +26,21 @@ const BookItem = props => {
                 name={'x'}
                 size={20}
                 style={styles.removeButton}
-                onPress={() => props.removeBook(props.book.bid)} 
+                onPress={() => Alert.alert(
+                    'Remove Book',
+                    `Sure you want to remove ${props.book.name}?`,
+                    [
+                        {
+                            text: 'Yes',
+                            onPress: () => props.removeBook(props.book.bid)
+                        },
+                        {
+                            text: 'Cancel',
+                            style: 'cancel'
+                        },
+                    ],
+                    { cancelable: true }
+                )}
             />
             <Text>{props.book.name}</Text>
             <Button 
