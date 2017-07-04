@@ -11,36 +11,29 @@ export default (state = initialState, action) => {
                 ...action.payload
             ]
 
+        case TYPES.REMOVE_BOOK: {
+            return [
+                ...state.slice(0, action.payload),
+                ...state.slice(action.payload + 1)
+            ]
+        }
+
         case TYPES.TOGGLE_BOOK:
-            return {
-
-            }
-
-        case TYPES.SELECTED_BOOK:
-            return {
-                ...state,
-                detailView: true,
-                bookSelected: action.payload,
-            }
-
-        case TYPES.NONE_SELECTED:
-            return {
-                ...state,
-                detailView: false,
-                bookSelected: null,
-            }
+            return state.map((book, bid) => {
+                if(bid === action.payload) {
+                    return {
+                        ...book,
+                        finished: true,
+                        finishDate: (new Date()).toLocaleDateString("en-US")
+                    }
+                }
+                return book
+            })
 
         case TYPES.FORM_UPDATE_BOOK:
             return {
                 ...state,
                 [action.payload.prop]: action.payload.value
-            }
-
-        case TYPES.NEW_BOOK:
-            return {
-                ...state,
-                name: '',
-                note: '',
             }
 
         // case TYPES.ADD_BOOK:
@@ -70,12 +63,19 @@ export default (state = initialState, action) => {
                 bid: '',
             }
 
-        case TYPES.REMOVE_BOOK: {
-            return [
-                ...state.slice(0, action.payload),
-                ...state.slice(action.payload + 1)
-            ]
-        }
+        case TYPES.SELECTED_BOOK:
+            return {
+                ...state,
+                detailView: true,
+                bookSelected: action.payload,
+            }
+
+        case TYPES.NONE_SELECTED:
+            return {
+                ...state,
+                detailView: false,
+                bookSelected: null,
+            }
 
         default:
             return state

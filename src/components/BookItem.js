@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, Button, View, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
@@ -10,23 +10,29 @@ const theme = getTheme();
 const styles = StyleSheet.create({
     card: {
         marginTop: 10,
-        width: 300,
         height: 200,
+        flexDirection: 'row',
     },
-    listItem: {
-        height: 50
-    }
+    removeButton: {
+        color: '#ccc',
+        padding: 10,
+    },
 })
 
 const BookItem = props => {
     return (
-        <View style={styles.listItem}>
-            <Text>{props.book.name}</Text>
+        <View style={[theme.cardStyle, styles.card]}>
             <FoundationIcon
                 name={'x'}
                 size={20}
-                style={{color: '#ccc'}}
+                style={styles.removeButton}
                 onPress={() => props.removeBook(props.book.bid)} 
+            />
+            <Text>{props.book.name}</Text>
+            <Button 
+                title='Finish'
+                color='#666'
+                onPress={() => props.toggleBook(props.book.bid)}
             />
         </View>
     )
