@@ -30,7 +30,7 @@ const BookItem = props => {
             />
             <Text>{props.book.name}</Text>
             <Button 
-                title='Finish'
+                title={props.book.finishDate}
                 color='#666'
                 onPress={() => props.toggleBook(props.book.bid)}
             />

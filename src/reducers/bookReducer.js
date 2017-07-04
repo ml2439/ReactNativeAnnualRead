@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
 
         case TYPES.TOGGLE_BOOK:
             return state.map((book, bid) => {
-                if(bid === action.payload) {
+                if(bid === action.payload && !book.finished) {
                     return {
                         ...book,
                         finished: true,
