@@ -41,6 +41,7 @@ class Stats extends Component {
           <Text>Deadline: {this.props.ddl.toString()}</Text>
           <Text>To read: {this.props.num}</Text>
           <Text>Books finished: {this.props.books.filter(b => b.finished).length}</Text>
+          <Text>Books in total: {this.props.books.length}</Text>
         </View>
       </View>
     );

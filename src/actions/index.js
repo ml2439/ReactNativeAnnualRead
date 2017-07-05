@@ -20,9 +20,29 @@ export const loadInitialBooks = () => {
 }
 
 export const removeBook = index => {
-    return {
-        type: TYPES.REMOVE_BOOK,
-        payload: index
+    return (dispatch) => {
+        AsyncStorage.getItem(
+            '@AR:Books',
+            (err, value) => {
+                let myBooks = {}
+                if (value) {
+                    myBooks = JSON.parse(value)
+                    myBooks = [
+                        ...myBooks.slice(0, index),
+                        ...myBooks.slice(index + 1)
+                    ]
+                    AsyncStorage.setItem(           // Update AsyncStorage
+                        '@AR:Books',
+                        JSON.stringify(myBooks)
+                    )
+                    console.log(myBooks)
+                }
+                dispatch({
+                    type: TYPES.REMOVE_BOOK,
+                    payload: index
+                })
+            }
+        )
     }
 }
 
