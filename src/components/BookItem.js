@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Button, View, Alert, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, Button, View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import Swipeout from 'react-native-swipeout';
 import * as actions from '../actions';
 
 const theme = getTheme();
 
 const styles = StyleSheet.create({
     card: {
-        marginTop: 5,
         height: 50,
         flexDirection: 'row',
         alignItems: 'center',
@@ -37,37 +36,47 @@ const styles = StyleSheet.create({
     },
 })
 
+
 const BookItem = props => {
     return (
-        <GestureRecognizer
-            style={[theme.cardStyle, styles.card, { backgroundColor: props.book.mark }]}
-            onSwipeLeft={() => props.toggleBook(props.book.bid)}
+        <Swipeout
+            right={[
+                {
+                    text: 'Finish',
+                    onPress: () => props.toggleBook(props.book.bid),
+                    backgroundColor: '#00BAAD',
+                }
+            ]}
+            autoClose={true}
+            style={{backgroundColor: props.book.mark}}
         >
-            <FoundationIcon
-                name={'x'}
-                size={20}
-                style={styles.removeButton}
-                onPress={() => Alert.alert(
-                    'Remove Book',
-                    `Sure you want to remove: ${props.book.name}?`,
-                    [
-                        {
-                            text: 'Yes',
-                            onPress: () => props.removeBook(props.book.bid)
-                        },
-                        {
-                            text: 'Cancel',
-                            style: 'cancel'
-                        },
-                    ],
-                    { cancelable: true }
-                )}
-            />
-            <View style={styles.bookInfo}>
-                <Text style={styles.bookName}>{props.book.name}</Text>
-                <Text style={styles.bookAuthor}>{props.book.author}</Text>
+            <View>
+                <FoundationIcon
+                    name={'x'}
+                    size={20}
+                    style={styles.removeButton}
+                    onPress={() => Alert.alert(
+                        'Remove Book',
+                        `Sure you want to remove: ${props.book.name}?`,
+                        [
+                            {
+                                text: 'Yes',
+                                onPress: () => props.removeBook(props.book.bid)
+                            },
+                            {
+                                text: 'Cancel',
+                                style: 'cancel'
+                            },
+                        ],
+                        { cancelable: true }
+                    )}
+                />
+                <View style={styles.bookInfo}>
+                    <Text style={styles.bookName}>{props.book.name}</Text>
+                    <Text style={styles.bookAuthor}>{props.book.author}</Text>
+                </View>
             </View>
-        </GestureRecognizer>
+        </Swipeout>
     )
 }
 

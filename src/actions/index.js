@@ -46,9 +46,29 @@ export const removeBook = index => {
 }
 
 export const toggleBook = bid => {
-    return {
-        type: TYPES.TOGGLE_BOOK,
-        payload: bid
+    return (dispatch) => {
+        AsyncStorage.getItem(
+            '@AR:Books',
+            (err, value) => {
+                let myBooks = {}
+                if (value) {
+                    myBooks = JSON.parse(value)
+                    myBooks[bid] = {
+                        ...myBooks[bid],
+                        finished: true,
+                        mark: '#00BAAD'
+                    }
+                    AsyncStorage.setItem(           // Update AsyncStorage
+                        '@AR:Books',
+                        JSON.stringify(myBooks)
+                    )
+                }
+                dispatch({
+                    type: TYPES.TOGGLE_BOOK,
+                    payload: bid
+                })
+            }
+        )
     }
 }
 
