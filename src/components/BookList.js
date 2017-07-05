@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Alert, View, Text, ListView } from 'react-native';
+import { StyleSheet, AsyncStorage, Alert, View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
@@ -71,8 +71,13 @@ class BookList extends Component {
 
   validateBook = () => {
     if (this.state.author && this.state.name) {
-      this.props.addBook(this.state);
-    } else {
+      this.props.addBook(this.state); // Add the new book to list
+      AsyncStorage.setItem(           // Update AsyncStorage
+        '@AR:Books',
+        JSON.stringify(this.props.books));
+      this.setState({...this.state, name: '', author: ''})  // Clear input
+    }
+    else {
       Alert.alert(
         'Add Book',
         `Make sure there's no empty input`,

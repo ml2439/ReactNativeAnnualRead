@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
                 ...action.payload
             ]
 
-        case TYPES.SAVE_BOOK:
+        case TYPES.ADD_BOOK:
             return [
                 ...state,
                 {
@@ -40,32 +40,6 @@ export default (state = initialState, action) => {
                 }
                 return book
             })
-
-        case TYPES.FORM_UPDATE_BOOK:
-            return {
-                ...state,
-                [action.payload.prop]: action.payload.value
-            }
-
-        // case TYPES.ADD_BOOK:
-        //     return {
-        //         ...state,
-        //         ...action.newBook
-        //     }
-
-        // dispatch when hit pencil button to update
-        case TYPES.UPDATE_BOOK:
-            return {
-                ...state,
-                updating: true,
-                name: action.payload.name,
-                note: action.payload.note,
-                bid: action.payload.bid,
-            }
-
-        // dispatch when hit 'UPDATE' button in update view
-
-
 
         default:
             return state
