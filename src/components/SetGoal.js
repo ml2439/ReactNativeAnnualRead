@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -10,6 +9,7 @@ import Icon from 'react-native-vector-icons/Foundation';
 import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import Styles from '../styles';
 
 const SubmitButton = MKButton.coloredButton()
   .withText('SUBMIT')
@@ -22,7 +22,7 @@ class SetGoal extends Component {
     tabBarIcon: ({ tintColor }) => (
       <Icon
         name={'widget'}
-        size={50}
+        size={40}
         style={{ color: tintColor }}
       />
     )
@@ -35,14 +35,17 @@ class SetGoal extends Component {
   onSubmitPress() {
     const { num, ddl } = this.props;
     this.props.setGoal({ num, ddl });
+    this.props.navigation.navigate('Stats');
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Set Goal page</Text>
+      <View style={Styles.container}>
+        <View style={Styles.titleArea}>
+          <Text style={Styles.title}>Set Goal</Text>
+        </View>
         <TextInput 
-          style={styles.fieldStyles}
+          style={Styles.textField}
           placeholder={`${this.props.num} books to read`}
           onChangeText={value => this.props.formUpdateGoal({prop: 'num', value})}
         />
@@ -58,18 +61,6 @@ class SetGoal extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 20,
-  },
-  fieldStyles: {
-    height: 40,
-    color: MKColor.DeepPurple,
-  },
-});
 
 const mapStateToProps = state => {
   const { num, ddl } = state.goalReducer;

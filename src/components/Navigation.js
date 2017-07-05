@@ -5,16 +5,16 @@ import Stats from './Stats';
 
 const Navigation = TabNavigator({
     BookList: { screen: BookList },
-    SetGoal: { screen: SetGoal },
     Stats: { screen: Stats },
+    SetGoal: { screen: SetGoal },
 }, {
     tabBarOptions: {
-        activeTintColor: '#888',
+        activeTintColor: '#aaa',
         inactiveTintColor: 'white',
         swipeEnabled: true,
         showLabel: false,
         style: {
-            backgroundColor: '#900C3F'
+            backgroundColor: '#c83652'
         }
     }
 })

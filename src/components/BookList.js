@@ -1,29 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, AsyncStorage, Alert, View, Text, ListView } from 'react-native';
+import { StyleSheet, AsyncStorage, Alert, Button, View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
 import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import BookItem from './BookItem';
 import * as actions from '../actions';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 20,
-  },
-  fieldStyles: {
-    height: 40,
-    color: MKColor.Orange,
-  },
-  addButton: {
-    marginTop: 20,
-  },
-});
+import Styles from '../styles';
 
 const AddButton = MKButton.coloredButton()
   .withText('ADD')
+  .withStyle({
+    height: 52
+  })
   .build()
 
 class BookList extends Component {
@@ -31,8 +20,8 @@ class BookList extends Component {
     tabBarLabel: 'BookList',
     tabBarIcon: ({ tintColor }) => (
       <Icon
-        name={'book'}
-        size={50}
+        name={'list'}
+        size={40}
         style={{ color: tintColor }}
       />
     )
@@ -79,9 +68,9 @@ class BookList extends Component {
           this.state
         ]));
       this.setState({      // Clear input
-        ...this.state, 
-        name: '', 
-        author: '' 
+        ...this.state,
+        name: '',
+        author: ''
       })
     }
     else {
@@ -89,8 +78,8 @@ class BookList extends Component {
         'Add Book',
         `Make sure there's no empty input`,
         [{
-            text: 'Ok',
-            style: 'cancel'
+          text: 'Ok',
+          style: 'cancel'
         }],
         { cancelable: true }
       )
@@ -99,27 +88,35 @@ class BookList extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-
-        {this.renderInitialView()}
-
-        <Text>Add a Book</Text>
-        <MKTextField
-          textInputStyle={styles.fieldStyles}
-          placeholder={'Book name...'}
-          tintColor={MKColor.Teal}
-          value={this.state.name}
-          onChangeText={(name) => this.setState({ ...this.state, name })}
-        />
-        <MKTextField
-          textInputStyle={styles.fieldStyles}
-          placeholder={'Author...'}
-          tintColor={MKColor.Teal}
-          value={this.state.author}
-          onChangeText={(author) => this.setState({ ...this.state, author })}
-        />
-        <View style={styles.addButton}>
-          <AddButton onPress={this.validateBook} />
+      <View style={Styles.container}>
+        <View style={Styles.titleArea}>
+          <Text style={Styles.title}>Book List</Text>
+        </View>
+        <View style={Styles.listArea}>
+          {this.renderInitialView()}
+        </View>
+        <View style={Styles.addArea}>
+          <View style={Styles.inputArea}>
+            <MKTextField
+              textInputStyle={Styles.inputStyles}
+              placeholder={'Book name...'}
+              tintColor={MKColor.Teal}
+              value={this.state.name}
+              onChangeText={(name) => this.setState({ ...this.state, name })}
+              style={Styles.fieldStyles}
+            />
+            <MKTextField
+              textInputStyle={Styles.inputStyles}
+              placeholder={'Author...'}
+              tintColor={MKColor.Teal}
+              value={this.state.author}
+              onChangeText={(author) => this.setState({ ...this.state, author })}
+              style={Styles.fieldStyles}
+            />
+          </View>
+          <View style={Styles.buttonArea}>
+            <AddButton onPress={this.validateBook} />
+          </View>
         </View>
       </View >
     )

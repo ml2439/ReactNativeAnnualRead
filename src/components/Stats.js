@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  DatePickerIOS,
-} from 'react-native';
+import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
 import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import Styles from '../styles';
 
 const SubmitButton = MKButton.coloredButton()
   .withText('SUBMIT')
@@ -22,7 +17,7 @@ class Stats extends Component {
     tabBarIcon: ({ tintColor }) => (
       <Icon
         name={'flag'}
-        size={50}
+        size={40}
         style={{ color: tintColor }}
       />
     )
@@ -34,8 +29,10 @@ class Stats extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Stats</Text>
+      <View style={Styles.container}>
+        <View style={Styles.titleArea}>
+          <Text style={Styles.title}>Stats</Text>
+        </View>
 
         <View>
           <Text>Deadline: {this.props.ddl.toString()}</Text>
@@ -47,14 +44,6 @@ class Stats extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 20,
-  },
-});
 
 const mapStateToProps = state => {
   const { num, ddl } = state.goalReducer;
