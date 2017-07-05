@@ -6,7 +6,7 @@ const initialState = [
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case TYPES.INITIAL_FETCH:
+        case TYPES.LOAD_BOOKS:
             return [
                 ...action.payload
             ]
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
                     return {
                         ...book,
                         finished: true,
-                        mark: '#00BAAD'//(new Date()).toLocaleDateString("en-US")
+                        mark: '#00BAAD' //(new Date()).toLocaleDateString("en-US")
                     }
                 }
                 return book

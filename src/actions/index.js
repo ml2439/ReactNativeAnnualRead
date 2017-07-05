@@ -1,11 +1,21 @@
 import { AsyncStorage } from 'react-native';
 import TYPES from './types';
-import books from '../reducers/books.json';
 
 export const loadInitialBooks = () => {
-    return {
-        type: TYPES.INITIAL_FETCH,
-        payload: books
+    return (dispatch) => {
+        AsyncStorage.getItem(
+            '@AR:Books',
+            (err, value) => {
+                let myBooks = {}
+                if (value) {
+                    myBooks = JSON.parse(value)
+                }
+                dispatch({
+                    type: TYPES.LOAD_BOOKS,
+                    payload: myBooks
+                })
+            }
+        )
     }
 }
 

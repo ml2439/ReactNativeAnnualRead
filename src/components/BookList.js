@@ -74,19 +74,24 @@ class BookList extends Component {
       this.props.addBook(this.state); // Add the new book to list
       AsyncStorage.setItem(           // Update AsyncStorage
         '@AR:Books',
-        JSON.stringify(this.props.books));
-      this.setState({...this.state, name: '', author: ''})  // Clear input
+        JSON.stringify([
+          ...this.props.books,
+          this.state
+        ]));
+      this.setState({      // Clear input
+        ...this.state, 
+        name: '', 
+        author: '' 
+      })
     }
     else {
       Alert.alert(
         'Add Book',
         `Make sure there's no empty input`,
-        [
-          {
+        [{
             text: 'Ok',
             style: 'cancel'
-          },
-        ],
+        }],
         { cancelable: true }
       )
     }
