@@ -35,7 +35,6 @@ export const removeBook = index => {
                         '@AR:Books',
                         JSON.stringify(myBooks)
                     )
-                    console.log(myBooks)
                 }
                 dispatch({
                     type: TYPES.REMOVE_BOOK,
