@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export const Color = {
-    inputBackground: 'rgba(200,200,200,0.4)'
+    inputBackground: 'rgba(200,200,200,0.4)',
+    percentFinish: 'red',
+    percentTotal: 'blue',
 }
 
 const Styles = StyleSheet.create({
@@ -73,6 +75,30 @@ const Styles = StyleSheet.create({
     inputSection: {
         marginBottom: 20,
     },
+    /*************** For Stats ***************/
+    section: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    goalBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#c83652',
+        height: 50,
+    },
+    barText: {
+        color: '#ddd',
+        alignSelf: 'center',
+    },
+    goalBarNum: {
+        fontSize: 28,
+        color: 'white',
+        alignSelf: 'center',
+        fontFamily: 'Futura',
+    },
     /*************** For BookItem ***************/
     bookItem: {
         flex: 1,
@@ -85,6 +111,7 @@ const Styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        paddingRight: 10,
     },
     bookIcon: {
         color: '#ddd',
@@ -99,7 +126,6 @@ const Styles = StyleSheet.create({
     bookAuthor: {
         fontFamily: 'Cochin-Italic',
         color: '#555',
-        paddingRight: 10,
         alignSelf: 'flex-end',
     },
 
