@@ -76,9 +76,6 @@ class Stats extends Component {
             </Text>
             <View style={[Styles.percentBar, { width: barWidth }]}>
               <View style={[Styles.percentBarInner, { width: barWidthInner }]}>
-                <Text style={[Styles.goalBarNum, { color: 'black' }]}>
-                  {`${percentFinished}%`}
-                </Text>
               </View>
             </View>
 
