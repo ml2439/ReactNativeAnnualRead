@@ -55,7 +55,7 @@ class Stats extends Component {
             size={20}
             style={[Styles.bookIcon, { color: Color.inactive }]}
           />
-          <View style={Styles.bookInfo}>
+          <View style={[Styles.bookInfo, { paddingRight: 0 }]}>
             <Text style={Styles.barText}>Read</Text>
             <Text style={Styles.goalBarNum}>{toRead}</Text>
             <Text style={Styles.barText}>books by</Text>

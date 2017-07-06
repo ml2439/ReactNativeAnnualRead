@@ -108,7 +108,7 @@ const Styles = StyleSheet.create({
         alignSelf: 'center',
     },
     goalBarNum: {
-        fontSize: 28,
+        fontSize: 24,
         color: 'white',
         alignSelf: 'center',
         fontFamily: 'Futura',
@@ -127,7 +127,7 @@ const Styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         height: 46,
-        borderRadius: 3,
+        borderRadius: 2,
         backgroundColor: Color.bookFinish,
     },
     /*************** For BookItem ***************/
