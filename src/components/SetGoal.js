@@ -6,10 +6,10 @@ import {
   DatePickerIOS,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
-import { MKColor, MKButton } from 'react-native-material-kit';
+import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import Styles from '../styles';
+import Styles, {Color} from '../styles';
 
 const SubmitButton = MKButton.coloredButton()
   .withText('SUBMIT')
@@ -44,18 +44,29 @@ class SetGoal extends Component {
         <View style={Styles.titleArea}>
           <Text style={Styles.title}>Set Goal</Text>
         </View>
-        <TextInput 
-          style={Styles.textField}
-          placeholder={`${this.props.num} books to read`}
-          onChangeText={value => this.props.formUpdateGoal({prop: 'num', value})}
-        />
-        <DatePickerIOS
-          date={new Date(this.props.ddl)}
-          mode='date'
-          onDateChange={value => this.props.formUpdateGoal({ prop: 'ddl', value })}
-        />
-        <View>
-          <SubmitButton onPress={this.onSubmitPress.bind(this)} />
+        <View style={Styles.inputArea}>
+          <View style={Styles.inputSection}>
+            <Text style={Styles.label}>Number of Books</Text>
+            <MKTextField
+              textInputStyle={Styles.inputStylesNum}
+              placeholder={`${this.props.num} books to read`}
+              tintColor={MKColor.Teal}
+              onChangeText={value => this.props.formUpdateGoal({ prop: 'num', value })}
+              style={[Styles.fieldStyles, {backgroundColor: Color.inputBackground}]}
+            />
+          </View>
+          <View style={Styles.inputSection}>
+            <Text style={Styles.label}>Deadline</Text>
+            <DatePickerIOS
+              style={{backgroundColor: Color.inputBackground}}
+              date={new Date(this.props.ddl)}
+              mode='date'
+              onDateChange={value => this.props.formUpdateGoal({ prop: 'ddl', value })}
+            />
+          </View>
+          <View>
+            <SubmitButton onPress={this.onSubmitPress.bind(this)} />
+          </View>
         </View>
       </View>
     );

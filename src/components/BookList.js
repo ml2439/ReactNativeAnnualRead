@@ -6,12 +6,12 @@ import Icon from 'react-native-vector-icons/Foundation';
 import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import BookItem from './BookItem';
 import * as actions from '../actions';
-import Styles from '../styles';
+import Styles, { Color } from '../styles';
 
 const AddButton = MKButton.coloredButton()
   .withText('ADD')
   .withStyle({
-    height: 52
+    height: 52,
   })
   .build()
 
@@ -96,7 +96,7 @@ class BookList extends Component {
           {this.renderInitialView()}
         </View>
         <View style={Styles.addArea}>
-          <View style={Styles.inputArea}>
+          <View style={[Styles.inputArea, { backgroundColor: Color.inputBackground }]}>
             <MKTextField
               textInputStyle={Styles.inputStyles}
               placeholder={'Book name...'}

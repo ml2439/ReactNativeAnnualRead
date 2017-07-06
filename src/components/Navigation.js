@@ -9,8 +9,8 @@ const Navigation = TabNavigator({
     SetGoal: { screen: SetGoal },
 }, {
     tabBarOptions: {
-        activeTintColor: '#aaa',
-        inactiveTintColor: 'white',
+        activeTintColor: 'white',
+        inactiveTintColor: '#fcc',
         swipeEnabled: true,
         showLabel: false,
         style: {
