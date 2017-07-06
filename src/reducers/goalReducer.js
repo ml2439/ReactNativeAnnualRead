@@ -2,7 +2,7 @@ import TYPES from '../actions/types'
 
 const initialState = {
     num: 24,
-    ddl: new Date()
+    ddl: (new Date()).toLocaleDateString("en-US")
 }
 
 export default (state = initialState, action) => {

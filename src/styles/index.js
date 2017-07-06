@@ -9,7 +9,7 @@ const Styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         paddingTop: 20,
-        backgroundColor: '#fcc',
+        // backgroundColor: '#fcc',
     },
     titleArea: {
         height: 40,
