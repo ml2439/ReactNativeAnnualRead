@@ -10,6 +10,7 @@ export const Color = {
     bookNew: '#00BAAD',
     bookFinish: '#FFC300',
     bookDelete: '#f01c4a',
+    textColorGrey: '#555',
 }
 
 const Styles = StyleSheet.create({
@@ -28,7 +29,7 @@ const Styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         fontFamily: 'Avenir-Black',
-        color: '#666',
+        color: Color.textColorGrey,
     },
     textField: {
         height: 40,
@@ -53,11 +54,12 @@ const Styles = StyleSheet.create({
         color: 'darkred',
     },
     inputArea: {
-        flex: 1,
+        flex: 5,
         marginLeft: 5,
         marginRight: 5,
     },
     buttonArea: {
+        flex: 1,
         alignSelf: 'stretch',
         marginRight: 5,
     },
@@ -111,8 +113,22 @@ const Styles = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'Futura',
     },
-    pieChart: {
+    percentBar: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        height: 50,
         marginTop: 20,
+        marginBottom: 20,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: Color.background,
+    },
+    percentBarInner: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        height: 46,
+        borderRadius: 3,
+        backgroundColor: Color.bookFinish,
     },
     /*************** For BookItem ***************/
     bookItem: {
@@ -141,7 +157,7 @@ const Styles = StyleSheet.create({
     },
     bookAuthor: {
         fontFamily: 'Cochin-Italic',
-        color: '#555',
+        color: Color.textColorGrey,
         alignSelf: 'flex-end',
     },
 

@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/EvilIcons';
 import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
-import PieChart from 'react-native-pie-chart';
 import * as actions from '../actions';
 import Styles, { Color } from '../styles';
 
@@ -35,18 +34,15 @@ class Stats extends Component {
     const deadline = (new Date(this.props.ddl)).toLocaleDateString("en-US")
     const toRead = this.props.num
     const bookFinished = this.props.books.filter(b => b.finished).length
-    const percentFinished = Math.floor(bookFinished / toRead * 100) + '%'
+    const percentFinished = Math.floor(bookFinished / toRead * 100)
 
     const MSPERDAY = 1000 * 60 * 60 * 24
     const timeLeft = (new Date(this.props.ddl)).getTime() - Date.now()
     const daysLeft = Math.ceil(timeLeft / MSPERDAY)
     const daysPerBook = Math.ceil(daysLeft / (toRead - bookFinished))
 
-    const chart_wh = width * 0.3
-    // const series = [123, 321]
-    const series = [parseInt(bookFinished, 10), parseInt(toRead, 10)]
-    const sliceColor = [Color.bookFinish, Color.bookNew]
-
+    const barWidth = width * 0.8
+    const barWidthInner = barWidth * percentFinished * 0.01
     return (
       <View style={Styles.container}>
         <View style={Styles.titleArea}>
@@ -57,7 +53,7 @@ class Stats extends Component {
           <Icon
             name={'flag'}
             size={20}
-            style={[Styles.bookIcon, {color: Color.inactive}]}
+            style={[Styles.bookIcon, { color: Color.inactive }]}
           />
           <View style={Styles.bookInfo}>
             <Text style={Styles.barText}>Read</Text>
@@ -68,7 +64,7 @@ class Stats extends Component {
           <FontAwesome
             name={'chevron-right'}
             size={25}
-            style={[Styles.bookIcon, {color: Color.inactive}]}
+            style={[Styles.bookIcon, { color: Color.inactive }]}
             onPress={() => this.props.navigation.navigate('SetGoal')}
           />
         </View>
@@ -78,16 +74,14 @@ class Stats extends Component {
             <Text style={[Styles.goalBarNum, { color: 'black' }]}>
               {bookFinished}/{toRead}
             </Text>
-            <PieChart
-              chart_wh={chart_wh}
-              series={series}
-              coverRadius={0.9}
-              sliceColor={sliceColor}
-              style={Styles.pieChart}
-            />
-            <Text style={[Styles.goalBarNum, { color: 'black' }]}>
-              {percentFinished}
-            </Text>
+            <View style={[Styles.percentBar, { width: barWidth }]}>
+              <View style={[Styles.percentBarInner, { width: barWidthInner }]}>
+                <Text style={[Styles.goalBarNum, { color: 'black' }]}>
+                  {`${percentFinished}%`}
+                </Text>
+              </View>
+            </View>
+
           </View>
           <View style={Styles.section}>
             <Text style={Styles.label}>Days left:</Text>
