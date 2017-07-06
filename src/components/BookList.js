@@ -3,7 +3,7 @@ import { StyleSheet, AsyncStorage, Alert, Button, View, Text, ListView } from 'r
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
-import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
+import { MKTextField, MKButton } from 'react-native-material-kit';
 import BookItem from './BookItem';
 import * as actions from '../actions';
 import Styles, { Color } from '../styles';
@@ -32,7 +32,7 @@ class BookList extends Component {
     this.state = {
       name: '',
       author: '',
-      mark: "#FFC300",
+      mark: Color.bookNew,
       finished: false
     }
   }
@@ -96,11 +96,11 @@ class BookList extends Component {
           {this.renderInitialView()}
         </View>
         <View style={Styles.addArea}>
-          <View style={[Styles.inputArea, { backgroundColor: Color.inputBackground }]}>
+          <View style={Styles.inputArea}>
             <MKTextField
               textInputStyle={Styles.inputStyles}
               placeholder={'Book name...'}
-              tintColor={MKColor.Teal}
+              tintColor={Color.background}
               value={this.state.name}
               onChangeText={(name) => this.setState({ ...this.state, name })}
               style={Styles.fieldStyles}
@@ -108,7 +108,7 @@ class BookList extends Component {
             <MKTextField
               textInputStyle={Styles.inputStyles}
               placeholder={'Author...'}
-              tintColor={MKColor.Teal}
+              tintColor={Color.background}
               value={this.state.author}
               onChangeText={(author) => this.setState({ ...this.state, author })}
               style={Styles.fieldStyles}

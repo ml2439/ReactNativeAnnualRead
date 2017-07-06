@@ -1,5 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import TYPES from './types';
+import { Color } from '../styles';
 
 export const loadInitialBooks = () => {
     return (dispatch) => {
@@ -56,7 +57,7 @@ export const toggleBook = bid => {
                     myBooks[bid] = {
                         ...myBooks[bid],
                         finished: true,
-                        mark: '#00BAAD'
+                        mark: Color.bookFinish
                     }
                     AsyncStorage.setItem(           // Update AsyncStorage
                         '@AR:Books',

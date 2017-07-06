@@ -5,7 +5,7 @@ import { getTheme } from 'react-native-material-kit';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import Swipeout from 'react-native-swipeout';
 import * as actions from '../actions';
-import Styles from '../styles';
+import Styles, { Color } from '../styles';
 
 const theme = getTheme();
 
@@ -15,14 +15,14 @@ const BookItem = props => {
             right={[
                 {
                     text: 'Finish',
-                    backgroundColor: '#00BAAD',
+                    backgroundColor: Color.bookFinish,
                     onPress: () => props.toggleBook(props.book.bid),
                 }
             ]}
             left={[
                 {
                     text: 'Delete',
-                    backgroundColor: 'red',
+                    backgroundColor: Color.bookDelete,
                     onPress: () => Alert.alert(
                         'Remove Book',
                         `Sure you want to remove: ${props.book.name}?`,

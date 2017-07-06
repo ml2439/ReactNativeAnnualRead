@@ -1,4 +1,5 @@
 import TYPES from '../actions/types'
+import { Color } from '../styles'
 
 const initialState = [
 
@@ -17,7 +18,7 @@ export default (state = initialState, action) => {
                 {
                     name: action.payload.name,
                     author: action.payload.author,
-                    mark: "#FFC300",
+                    mark: Color.bookNew,
                     finished: false
                 }
             ]
@@ -35,7 +36,7 @@ export default (state = initialState, action) => {
                     return {
                         ...book,
                         finished: true,
-                        mark: '#00BAAD' //(new Date()).toLocaleDateString("en-US")
+                        mark: Color.bookFinish
                     }
                 }
                 return book

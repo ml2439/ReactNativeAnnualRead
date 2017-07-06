@@ -1,9 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export const Color = {
-    inputBackground: 'rgba(200,200,200,0.4)',
-    percentFinish: 'red',
-    percentTotal: 'blue',
+    background: '#3F51B5',
+    lightBackground: 'rgba(63,81,181,0.1)',
+    inactive: 'rgba(255,255,255,0.5)',
+    percentFinish: '#fdcb4e',
+    percentTotal: '#c83652',
+    bookNew: '#00BAAD',
+    bookFinish: '#FFC300',
+    bookDelete: '#f01c4a',
 }
 
 const Styles = StyleSheet.create({
@@ -11,7 +16,7 @@ const Styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         paddingTop: 20,
-        // backgroundColor: '#fcc',
+        backgroundColor: Color.inactive,
     },
     titleArea: {
         height: 40,
@@ -38,7 +43,9 @@ const Styles = StyleSheet.create({
     },
     fieldStyles: {
         marginBottom: 0,
-        marginTop: 5,
+        paddingTop: 5,
+        borderRadius: 3,
+        backgroundColor: Color.lightBackground,
     },
     inputStyles: {
         height: 20,
@@ -70,7 +77,7 @@ const Styles = StyleSheet.create({
         fontSize: 25,
     },
     label: {
-        // fontSize: ,
+        fontSize: 16,
     },
     inputSection: {
         marginBottom: 20,
@@ -80,17 +87,21 @@ const Styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 4,
+        paddingTop: 15,
+        paddingBottom: 15,
+        backgroundColor: Color.lightBackground,
     },
     goalBar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#c83652',
+        backgroundColor: Color.background,
         height: 50,
     },
     barText: {
-        color: '#ddd',
+        color: Color.inactive,
+        fontSize: 16,
         alignSelf: 'center',
     },
     goalBarNum: {
@@ -98,6 +109,9 @@ const Styles = StyleSheet.create({
         color: 'white',
         alignSelf: 'center',
         fontFamily: 'Futura',
+    },
+    pieChart: {
+        marginTop: 20,
     },
     /*************** For BookItem ***************/
     bookItem: {
@@ -114,8 +128,9 @@ const Styles = StyleSheet.create({
         paddingRight: 10,
     },
     bookIcon: {
-        color: '#ddd',
+        color: Color.inactive,
         padding: 10,
+        alignSelf: 'center',
     },
     bookName: {
         fontSize: 18,

@@ -52,13 +52,13 @@ class SetGoal extends Component {
               placeholder={`${this.props.num} books to read`}
               tintColor={MKColor.Teal}
               onChangeText={value => this.props.formUpdateGoal({ prop: 'num', value })}
-              style={[Styles.fieldStyles, {backgroundColor: Color.inputBackground}]}
+              style={Styles.fieldStyles}
             />
           </View>
           <View style={Styles.inputSection}>
             <Text style={Styles.label}>Deadline</Text>
             <DatePickerIOS
-              style={{backgroundColor: Color.inputBackground}}
+              style={Styles.fieldStyles}
               date={new Date(this.props.ddl)}
               mode='date'
               onDateChange={value => this.props.formUpdateGoal({ prop: 'ddl', value })}

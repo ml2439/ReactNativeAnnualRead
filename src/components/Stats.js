@@ -43,8 +43,9 @@ class Stats extends Component {
     const daysPerBook = Math.ceil(daysLeft / (toRead - bookFinished))
 
     const chart_wh = width * 0.3
-    const series = [bookFinished, toRead]
-    const sliceColor = [Color.percentFinish, Color.percentTotal]
+    // const series = [123, 321]
+    const series = [parseInt(bookFinished, 10), parseInt(toRead, 10)]
+    const sliceColor = [Color.bookFinish, Color.bookNew]
 
     return (
       <View style={Styles.container}>
@@ -66,40 +67,38 @@ class Stats extends Component {
           </View>
           <FontAwesome
             name={'chevron-right'}
-            size={35}
+            size={25}
             style={Styles.bookIcon}
             onPress={() => this.props.navigation.navigate('SetGoal')}
           />
         </View>
         <ScrollView>
           <View style={Styles.section}>
-            <Text>Books finished/total:</Text>
+            <Text style={Styles.label}>Books finished/total:</Text>
             <Text style={[Styles.goalBarNum, { color: 'black' }]}>
               {bookFinished}/{toRead}
             </Text>
-          </View>
-          <View style={Styles.section}>
             <PieChart
               chart_wh={chart_wh}
               series={series}
-              doughnut={true}
               coverRadius={0.9}
               sliceColor={sliceColor}
+              style={Styles.pieChart}
             />
             <Text style={[Styles.goalBarNum, { color: 'black' }]}>
               {percentFinished}
             </Text>
           </View>
           <View style={Styles.section}>
-            <Text>Days left:</Text>
+            <Text style={Styles.label}>Days left:</Text>
             <Text style={[Styles.goalBarNum, { color: 'black' }]}>
               {daysLeft}
             </Text>
           </View>
           <View style={Styles.section}>
-            <Text>Read 1 book every</Text>
+            <Text style={Styles.label}>Read 1 book every</Text>
             <Text style={[Styles.goalBarNum, { color: 'black' }]}>{daysPerBook}</Text>
-            <Text>days to achieve your goal</Text>
+            <Text style={Styles.label}>days to achieve your goal</Text>
           </View>
         </ScrollView>
       </View>
