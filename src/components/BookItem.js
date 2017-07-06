@@ -41,7 +41,7 @@ const BookItem = props => {
                 }
             ]}
             autoClose={true}
-            style={{ backgroundColor: props.book.mark }}
+            style={{ backgroundColor: props.book.mark, marginBottom: 2 }}
         >
             <View style={Styles.bookItem}>
                 <FoundationIcon name={'book'} size={20} style={Styles.bookIcon} />

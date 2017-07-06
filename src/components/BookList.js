@@ -100,7 +100,7 @@ class BookList extends Component {
             <MKTextField
               textInputStyle={Styles.inputStyles}
               placeholder={'Book name...'}
-              tintColor={Color.background}
+              tintColor={Color.bookNew}
               value={this.state.name}
               onChangeText={(name) => this.setState({ ...this.state, name })}
               style={Styles.fieldStyles}
@@ -108,7 +108,7 @@ class BookList extends Component {
             <MKTextField
               textInputStyle={Styles.inputStyles}
               placeholder={'Author...'}
-              tintColor={Color.background}
+              tintColor={Color.bookNew}
               value={this.state.author}
               onChangeText={(author) => this.setState({ ...this.state, author })}
               style={Styles.fieldStyles}
