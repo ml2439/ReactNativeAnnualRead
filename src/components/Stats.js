@@ -57,7 +57,7 @@ class Stats extends Component {
           <Icon
             name={'flag'}
             size={20}
-            style={Styles.bookIcon}
+            style={[Styles.bookIcon, {color: Color.inactive}]}
           />
           <View style={Styles.bookInfo}>
             <Text style={Styles.barText}>Read</Text>
@@ -68,7 +68,7 @@ class Stats extends Component {
           <FontAwesome
             name={'chevron-right'}
             size={25}
-            style={Styles.bookIcon}
+            style={[Styles.bookIcon, {color: Color.inactive}]}
             onPress={() => this.props.navigation.navigate('SetGoal')}
           />
         </View>

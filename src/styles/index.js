@@ -4,6 +4,7 @@ export const Color = {
     background: '#3F51B5',
     lightBackground: 'rgba(63,81,181,0.1)',
     inactive: 'rgba(255,255,255,0.5)',
+    inactiveDark: 'rgba(0,0,0,0.5)',
     percentFinish: '#fdcb4e',
     percentTotal: '#c83652',
     bookNew: '#00BAAD',
@@ -128,7 +129,7 @@ const Styles = StyleSheet.create({
         paddingRight: 10,
     },
     bookIcon: {
-        color: Color.inactive,
+        color: Color.inactiveDark,
         padding: 10,
         alignSelf: 'center',
     },
