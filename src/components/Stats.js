@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
 import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
+import PieChart from 'react-native-pie-chart';
 import * as actions from '../actions';
 import Styles from '../styles';
 
@@ -28,6 +29,10 @@ class Stats extends Component {
   }
 
   render() {
+    const chart_wh = 250
+    const series = [123, 321]
+    const sliceColor = ['#F44336','#2196F3']
+ 
     return (
       <View style={Styles.container}>
         <View style={Styles.titleArea}>
@@ -40,6 +45,13 @@ class Stats extends Component {
           <Text>Books finished: {this.props.books.filter(b => b.finished).length}</Text>
           <Text>Books in total: {this.props.books.length}</Text>
         </View>
+        <PieChart
+            chart_wh={chart_wh}
+            series={series}
+            doughnut={true}
+            coverRadius={0.9}
+            sliceColor={sliceColor}
+          />
       </View>
     );
   }
