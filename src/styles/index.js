@@ -17,19 +17,7 @@ const Styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        paddingTop: 20,
         backgroundColor: Color.inactive,
-    },
-    titleArea: {
-        height: 40,
-        justifyContent: 'center',
-    },
-    title: {
-        textAlign: 'center',
-        fontSize: 20,
-        fontWeight: 'bold',
-        fontFamily: 'Avenir-Black',
-        color: Color.textColorGrey,
     },
     textField: {
         height: 40,
