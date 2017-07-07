@@ -17,14 +17,7 @@ const AddButton = MKButton.coloredButton()
 
 class BookList extends Component {
   static navigationOptions = {
-    tabBarLabel: 'BookList',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name={'list'}
-        size={40}
-        style={{ color: tintColor }}
-      />
-    )
+    title: 'Book List'
   }
 
   constructor() {
@@ -89,8 +82,12 @@ class BookList extends Component {
   render() {
     return (
       <View style={Styles.container}>
-        <View style={Styles.titleArea}>
-          <Text style={Styles.title}>Book List</Text>
+        <View>
+          <Text
+            onPress={() => this.props.navigation.navigate('AddBook')}
+          >
+            Add Book
+        </Text>
         </View>
         <View style={Styles.listArea}>
           {this.renderInitialView()}
