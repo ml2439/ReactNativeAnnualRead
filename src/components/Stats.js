@@ -23,7 +23,8 @@ class Stats extends Component {
         size={40}
         style={{ color: tintColor }}
       />
-    )
+    ),
+    title: 'Stats',
   }
 
   componentWillMount() {
@@ -45,10 +46,6 @@ class Stats extends Component {
     const barWidthInner = barWidth * percentFinished * 0.01
     return (
       <View style={Styles.container}>
-        <View style={Styles.titleArea}>
-          <Text style={Styles.title}>Stats</Text>
-        </View>
-
         <View style={Styles.goalBar}>
           <Icon
             name={'flag'}

@@ -4,10 +4,26 @@ import SetGoal from './SetGoal';
 import Stats from './Stats';
 import { Color } from '../styles';
 
+const StatsTab = StackNavigator({
+    Stats: {
+        screen: Stats,
+        path: '/stats',
+    },
+    SetGoal: {
+        screen: SetGoal,
+        path: '/stats/setgoal',
+    }
+})
+
 const Navigation = TabNavigator({
-    BookList: { screen: BookList },
-    Stats: { screen: Stats },
-    SetGoal: { screen: SetGoal },
+    StatsTab: { 
+        screen: StatsTab,
+        path: '/stats',
+    },
+    BookList: { 
+        screen: BookList,
+        path: '/',
+    },
 }, {
         tabBarOptions: {
             activeTintColor: 'white',

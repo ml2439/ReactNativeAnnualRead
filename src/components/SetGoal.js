@@ -9,23 +9,15 @@ import Icon from 'react-native-vector-icons/Foundation';
 import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import Styles, {Color} from '../styles';
+import Styles, { Color } from '../styles';
 
 const SubmitButton = MKButton.coloredButton()
   .withText('SUBMIT')
   .build()
 
 class SetGoal extends Component {
-
   static navigationOptions = {
-    tabBarLabel: 'SetGoal',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name={'widget'}
-        size={40}
-        style={{ color: tintColor }}
-      />
-    )
+    title: 'Set Goal',
   }
 
   componentWillMount() {
@@ -35,15 +27,12 @@ class SetGoal extends Component {
   onSubmitPress() {
     const { num, ddl } = this.props;
     this.props.setGoal({ num, ddl });
-    this.props.navigation.navigate('Stats');
+    this.props.navigation.goBack(null);
   }
 
   render() {
     return (
       <View style={Styles.container}>
-        <View style={Styles.titleArea}>
-          <Text style={Styles.title}>Set Goal</Text>
-        </View>
         <View style={Styles.inputArea}>
           <View style={Styles.inputSection}>
             <Text style={Styles.label}>Number of Books</Text>
