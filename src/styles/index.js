@@ -1,4 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { height, width } = Dimensions.get('window');
+export const WIDTH = width
+export const HEIGHT = height
 
 export const Color = {
     background: '#3F51B5',
@@ -19,70 +23,39 @@ const Styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: Color.inactive,
     },
-    textField: {
-        height: 40,
-        color: 'purple',
+    section: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 2,
+        paddingTop: 15,
+        paddingBottom: 15,
+        backgroundColor: Color.lightBackground,
     },
     listArea: {
         flex: 1
     },
-    addArea: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'flex-end',
-    },
     fieldStyles: {
         marginBottom: 0,
         paddingTop: 5,
-        borderRadius: 3,
-        backgroundColor: Color.lightBackground,
+        width: width * 0.9,
     },
     inputStyles: {
-        height: 20,
+        height: 30,
         color: 'darkred',
+        fontSize: 25,
     },
     inputArea: {
         flex: 5,
         marginLeft: 5,
         marginRight: 5,
     },
-    buttonArea: {
-        flex: 1,
-        alignSelf: 'stretch',
-        marginRight: 5,
-    },
-    // button: {        // custom made Text-->Button
-    //   color: 'white',
-    //   fontSize: 20,
-    //   padding: 13,
-    //   borderWidth: 2,
-    //   borderRadius: 5,
-    //   alignSelf: 'stretch',
-    //   textAlign: 'center',
-    // },
-
-    /*************** For SetGoal ***************/
-    inputStylesNum: {
-        height: 30,
-        color: 'darkred',
-        fontSize: 25,
-    },
+    /*************** For SetGoal, AddBook ***************/
     label: {
         fontSize: 16,
-    },
-    inputSection: {
-        marginBottom: 20,
+        marginBottom: 5,
     },
     /*************** For Stats ***************/
-    section: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 4,
-        paddingTop: 15,
-        paddingBottom: 15,
-        backgroundColor: Color.lightBackground,
-    },
     goalBar: {
         flexDirection: 'row',
         justifyContent: 'space-between',

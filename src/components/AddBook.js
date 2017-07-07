@@ -56,10 +56,10 @@ class AddBook extends Component {
 
     render() {
         return (
-            <View>
-                <Text>Add A Book Here</Text>
-                <View style={Styles.addArea}>
-                    <View style={Styles.inputArea}>
+            <View style={Styles.container}>
+                <View style={Styles.inputArea}>
+                    <View style={Styles.section}>
+                        <Text style={Styles.label}>Book Name</Text>
                         <MKTextField
                             textInputStyle={Styles.inputStyles}
                             placeholder={'Book name...'}
@@ -68,6 +68,9 @@ class AddBook extends Component {
                             onChangeText={(name) => this.setState({ ...this.state, name })}
                             style={Styles.fieldStyles}
                         />
+                    </View>
+                    <View style={Styles.section}>
+                        <Text style={Styles.label}>Author</Text>
                         <MKTextField
                             textInputStyle={Styles.inputStyles}
                             placeholder={'Author...'}
@@ -77,11 +80,8 @@ class AddBook extends Component {
                             style={Styles.fieldStyles}
                         />
                     </View>
-                    <View style={Styles.buttonArea}>
-                        <AddButton onPress={this.onAddPress.bind(this)} />
-                    </View>
+                    <AddButton onPress={this.onAddPress.bind(this)} />
                 </View>
-
             </View>
         )
     }

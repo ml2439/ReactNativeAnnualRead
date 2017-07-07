@@ -34,17 +34,17 @@ class SetGoal extends Component {
     return (
       <View style={Styles.container}>
         <View style={Styles.inputArea}>
-          <View style={Styles.inputSection}>
+          <View style={Styles.section}>
             <Text style={Styles.label}>Number of Books</Text>
             <MKTextField
-              textInputStyle={Styles.inputStylesNum}
+              textInputStyle={Styles.inputStyles}
               placeholder={`${this.props.num} books to read`}
               tintColor={MKColor.Teal}
               onChangeText={value => this.props.formUpdateGoal({ prop: 'num', value })}
               style={Styles.fieldStyles}
             />
           </View>
-          <View style={Styles.inputSection}>
+          <View style={Styles.section}>
             <Text style={Styles.label}>Deadline</Text>
             <DatePickerIOS
               style={Styles.fieldStyles}

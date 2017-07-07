@@ -39,7 +39,7 @@ const Navigation = TabNavigator({
             tabBarIcon: ({ tintColor }) => (
                 <Icon
                     name={'list'}
-                    size={40}
+                    size={30}
                     style={{ color: tintColor }}
                 />
             )
@@ -53,7 +53,7 @@ const Navigation = TabNavigator({
             tabBarIcon: ({ tintColor }) => (
                 <Icon
                     name={'flag'}
-                    size={40}
+                    size={30}
                     style={{ color: tintColor }}
                 />
             ),

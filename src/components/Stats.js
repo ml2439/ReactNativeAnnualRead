@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Dimensions } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/EvilIcons';
 import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import Styles, { Color } from '../styles';
+import Styles, { Color, WIDTH } from '../styles';
 
 const SubmitButton = MKButton.coloredButton()
   .withText('SUBMIT')
   .build()
-
-const { height, width } = Dimensions.get('window');
 
 class Stats extends Component {
 
@@ -34,7 +32,7 @@ class Stats extends Component {
     const daysLeft = Math.ceil(timeLeft / MSPERDAY)
     const daysPerBook = Math.ceil(daysLeft / (toRead - bookFinished))
 
-    const barWidth = width * 0.8
+    const barWidth = WIDTH * 0.8
     const barWidthInner = barWidth * percentFinished * 0.01
     return (
       <View style={Styles.container}>
