@@ -16,14 +16,6 @@ const { height, width } = Dimensions.get('window');
 class Stats extends Component {
 
   static navigationOptions = {
-    tabBarLabel: 'Stats',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name={'flag'}
-        size={40}
-        style={{ color: tintColor }}
-      />
-    ),
     title: 'Stats',
   }
 

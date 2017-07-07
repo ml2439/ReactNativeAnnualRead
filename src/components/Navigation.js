@@ -1,4 +1,6 @@
+import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Foundation';
 import BookList from './BookList';
 import SetGoal from './SetGoal';
 import Stats from './Stats';
@@ -7,20 +9,29 @@ import { Color } from '../styles';
 const StatsTab = StackNavigator({
     Stats: {
         screen: Stats,
-        path: '/stats',
+        path: '/',
     },
     SetGoal: {
         screen: SetGoal,
-        path: '/stats/setgoal',
     }
 })
 
 const Navigation = TabNavigator({
-    StatsTab: { 
+    StatsTab: {
         screen: StatsTab,
         path: '/stats',
+        navigationOptions: {
+            tabBarLabel: 'Stats',
+            tabBarIcon: ({ tintColor }) => (
+                <Icon
+                    name={'flag'}
+                    size={40}
+                    style={{ color: tintColor }}
+                />
+            ),
+        }
     },
-    BookList: { 
+    BookList: {
         screen: BookList,
         path: '/',
     },
@@ -28,8 +39,10 @@ const Navigation = TabNavigator({
         tabBarOptions: {
             activeTintColor: 'white',
             inactiveTintColor: Color.inactive,
-            swipeEnabled: true,
-            showLabel: false,
+            showLabel: true,
+            tabBarPosition: 'bottom',
+            animationEnabled: false,
+            swipeEnabled: false,
             style: {
                 backgroundColor: Color.background
             }
