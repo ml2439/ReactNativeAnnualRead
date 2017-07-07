@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  TextInput,
-  View,
-  DatePickerIOS,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Foundation';
+import { Text, View, DatePickerIOS } from 'react-native';
 import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';

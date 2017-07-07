@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, AsyncStorage, Alert, Button, View, Text, ListView } from 'react-native';
+import { View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/EvilIcons';
-import { MKTextField, MKButton } from 'react-native-material-kit';
 import BookItem from './BookItem';
 import * as actions from '../actions';
 import Styles, { Color } from '../styles';
-
-const AddButton = MKButton.coloredButton()
-  .withText('ADD')
-  .withStyle({
-    height: 52,
-  })
-  .build()
 
 class BookList extends Component {
   static navigationOptions = {

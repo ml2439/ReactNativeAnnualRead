@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/EvilIcons';
-import { MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Styles, { Color, WIDTH } from '../styles';
-
-const SubmitButton = MKButton.coloredButton()
-  .withText('SUBMIT')
-  .build()
 
 class Stats extends Component {
 

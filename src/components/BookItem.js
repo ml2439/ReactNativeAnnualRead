@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Button, View, Alert } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import { getTheme } from 'react-native-material-kit';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import Swipeout from 'react-native-swipeout';
 import * as actions from '../actions';
 import Styles, { Color } from '../styles';
-
-const theme = getTheme();
 
 const BookItem = props => {
     return (
@@ -41,7 +38,7 @@ const BookItem = props => {
                 }
             ]}
             autoClose={true}
-            style={{ backgroundColor: props.book.mark, marginTop: 2 }}
+            style={{ backgroundColor: props.book.mark, marginBottom: 2 }}
         >
             <View style={Styles.bookItem}>
                 <FoundationIcon name={'book'} size={20} style={Styles.bookIcon} />
