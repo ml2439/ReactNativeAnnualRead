@@ -1,5 +1,4 @@
 # AnnualRead
-Supports IOS devices
 <img src="https://github.com/ml2439/ml2439.github.io/blob/master/images/ARstart.gif?raw=true" alt="start" style="width: 300px;"/>
 <img src="https://github.com/ml2439/ml2439.github.io/blob/master/images/ARgoal.gif?raw=true" alt="goal" style="width: 300px;"/>
 <img src="https://github.com/ml2439/ml2439.github.io/blob/master/images/ARbook.gif?raw=true" alt="book" style="width: 300px;"/>
