@@ -2,19 +2,22 @@ import { AsyncStorage } from 'react-native';
 import TYPES from './types';
 import { Color } from '../styles';
 
-export const loadInitialBooks = () => {
+export const loadBooks = () => {
     return (dispatch) => {
         AsyncStorage.getItem(
             '@AR:Books',
             (err, value) => {
-                let myBooks = {}
-                if (value) {
-                    myBooks = JSON.parse(value)
+                if (!value) {
+                    dispatch({
+                        type: TYPES.INIT_BOOKS
+                    })
+                } else {
+                    const myBooks = JSON.parse(value)
+                    dispatch({
+                        type: TYPES.LOAD_BOOKS,
+                        payload: myBooks
+                    })
                 }
-                dispatch({
-                    type: TYPES.LOAD_BOOKS,
-                    payload: myBooks
-                })
             }
         )
     }
@@ -83,20 +86,22 @@ export const addBook = (bookState) => {
 /*********************************************************
  ***************************** GOAL ACTION CREATORS
  *********************************************************/
-// assume no error
 export const loadGoal = () => {
     return (dispatch) => {
         AsyncStorage.getItem(
             '@AR:Goal',
             (err, value) => {
-                let myGoal = {}
-                if (value) {
-                    myGoal = JSON.parse(value)
+                if (!value) {
+                    dispatch({      // Set initial value
+                        type: TYPES.INIT_GOAL,
+                    })
+                } else {
+                    const myGoal = JSON.parse(value);
+                    dispatch({
+                        type: TYPES.LOAD_GOAL,
+                        payload: myGoal
+                    })
                 }
-                dispatch({
-                    type: TYPES.LOAD_GOAL,
-                    payload: myGoal
-                })
             }
         )
     }
@@ -108,7 +113,10 @@ export const setGoal = ({ num, ddl }) => {
             '@AR:Goal',
             JSON.stringify({ num, ddl })
         ).then(() => {
-            dispatch({ type: TYPES.SAVE_GOAL, payload: { num, ddl } })
+            dispatch({
+                type: TYPES.SAVE_GOAL,
+                payload: { num, ddl }
+            })
         })
     }
 }

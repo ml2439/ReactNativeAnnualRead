@@ -13,7 +13,7 @@ class BookList extends Component {
   }
 
   componentWillMount() {
-    this.props.loadInitialBooks();
+    this.props.loadBooks();
   }
 
   renderInitialView() {

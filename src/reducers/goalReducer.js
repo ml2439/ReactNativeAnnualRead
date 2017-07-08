@@ -1,12 +1,19 @@
 import TYPES from '../actions/types'
 
+let aYearFromNow = new Date()
+aYearFromNow.setFullYear(aYearFromNow.getFullYear() + 1)
+aYearFromNow = aYearFromNow.toLocaleDateString("en-US")
+
 const initialState = {
-    num: 24,
-    ddl: (new Date()).toLocaleDateString("en-US")
+    num: 7,
+    ddl: aYearFromNow
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case TYPES.INIT_GOAL: 
+            return initialState
+
         case TYPES.LOAD_GOAL:
             return {
                 ...action.payload
