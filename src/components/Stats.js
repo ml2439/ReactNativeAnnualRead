@@ -27,7 +27,7 @@ class Stats extends Component {
     const daysPerBook = Math.ceil(daysLeft / (toRead - bookFinished))
 
     const barWidth = WIDTH * 0.8
-    const barWidthInner = barWidth * percentFinished * 0.01
+    const barWidthInner = barWidth * percentFinished * 0.01 - 4
     return (
       <View style={Styles.container}>
         <TouchableHighlight
@@ -67,7 +67,9 @@ class Stats extends Component {
           </View>
           <View style={Styles.section}>
             <Text style={Styles.label}>Read 1 book every</Text>
-            <Text style={[Styles.goalBarNum, { color: 'black' }]}>{daysPerBook}</Text>
+            <Text style={[Styles.goalBarNum, { color: 'black' }]}>
+              {(daysPerBook > 0) ? daysPerBook : 0}
+            </Text>
             <Text style={Styles.label}>days to achieve your goal</Text>
           </View>
         </ScrollView>
