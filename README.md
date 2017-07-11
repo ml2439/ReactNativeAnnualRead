@@ -12,3 +12,13 @@
 <img src="https://github.com/ml2439/ml2439.github.io/blob/master/images/ARsetgoal.PNG?raw=true" alt="setGoal" style="width: 300px;"/>
 
 <img src="https://github.com/ml2439/ml2439.github.io/blob/master/images/ARaddbook.PNG?raw=true" alt="addBook" style="width: 300px;"/>
+
+## To run the app
+Start the debugger (optional)
+```
+REACT_DEBUGGER="rndebugger-open --open --port 8081" npm start
+```
+Run the app
+```
+react-native run-ios
+```

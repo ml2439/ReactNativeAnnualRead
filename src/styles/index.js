@@ -119,7 +119,7 @@ const Styles = StyleSheet.create({
     bookName: {
         fontSize: 18,
         fontFamily: 'Iowan Old Style',
-        paddingBottom: 5,
+        paddingBottom: 2,
         color: '#444',
     },
     bookAuthor: {

@@ -1,6 +1,7 @@
 {
 	"name": "annualread",
 	"version": "0.0.1",
+	"author": "Mengqiao Li",
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",

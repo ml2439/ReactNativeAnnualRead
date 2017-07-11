@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, DatePickerIOS } from 'react-native';
+import { Text, View, DatePickerIOS, Alert } from 'react-native';
 import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -20,8 +20,21 @@ class SetGoal extends Component {
 
   onSubmitPress() {
     const { num, ddl } = this.props;
-    this.props.setGoal({ num, ddl });
-    this.props.navigation.goBack(null);
+    if ((new Date(ddl)) < (new Date())) {
+      Alert.alert(
+        'Set Deadline',
+        'Deadline should be greater than today.',
+        [{
+          text: 'Ok',
+          style: 'cancel'
+        }],
+        { cancelable: true }
+      )
+    }
+    else {
+      this.props.setGoal({ num, ddl });
+      this.props.navigation.goBack(null);
+    }
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text, AsyncStorage, Alert } from 'react-native';
 import { MKTextField, MKColor, MKButton } from 'react-native-material-kit';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -21,25 +21,29 @@ class AddBook extends Component {
         }
     }
 
-    validateBook = () => {
+    onAddPress() {
         if (this.state.author && this.state.name) {
             this.props.addBook(this.state); // Add the new book to list
+
             AsyncStorage.setItem(           // Update AsyncStorage
                 '@AR:Books',
                 JSON.stringify([
                     ...this.props.books,
                     this.state
                 ]));
+                
             this.setState({      // Clear input
                 ...this.state,
                 name: '',
                 author: ''
             })
+
+            this.props.navigation.goBack(null); // Back to book list
         }
         else {
             Alert.alert(
                 'Add Book',
-                `Make sure there's no empty input`,
+                `Make sure there's no empty input.`,
                 [{
                     text: 'Ok',
                     style: 'cancel'
@@ -47,11 +51,6 @@ class AddBook extends Component {
                 { cancelable: true }
             )
         }
-    }
-
-    onAddPress() {
-        this.validateBook();
-        this.props.navigation.goBack(null);
     }
 
     render() {
